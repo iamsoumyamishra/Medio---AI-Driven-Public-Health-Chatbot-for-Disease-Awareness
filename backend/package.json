@@ -1,0 +1,16 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "This is a backend for Medio (The AI chatbot).",
+  "license": "ISC",
+  "author": "Soumya Mishra",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@google/genai": "^1.19.0",
+    "express": "^5.1.0"
+  }
+}
