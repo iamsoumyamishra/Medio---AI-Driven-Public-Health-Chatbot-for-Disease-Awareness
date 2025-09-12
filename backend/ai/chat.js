@@ -75,6 +75,7 @@ export const chat = async (userId, chatId, message) => {
 
 export const deleteChat = async (chatId) => {
 
-    await Chat.findOneAndDelete({ chatId })
+
+    await Chat.findOneAndDelete(chatId)
 
 }

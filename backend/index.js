@@ -1,7 +1,8 @@
 import express from 'express';
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import routes from './routes/api.js';
+import aiApi from './routes/api.js';
+import auth from './routes/api.js';
 import consoleLogs from './middleware/consoleLogs.js';
 
 dotenv.config({quiet: true})
@@ -19,7 +20,8 @@ try{
 }
 
 
-app.use('/api/ai', routes);
+app.use('/api/ai', aiApi);
+app.use('/auth', auth)
 app.use(express.json());
 app.use(consoleLogs);
 

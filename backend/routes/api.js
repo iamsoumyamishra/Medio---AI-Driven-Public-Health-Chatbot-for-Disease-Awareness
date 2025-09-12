@@ -4,17 +4,17 @@ import { createNewChat } from '../ai/chat.js';
 import consoleLogs from '../middleware/consoleLogs.js';
 
 
-const routes = express.Router();
+const router = express.Router();
 
 
 
-routes.use(express.json());
-routes.use(consoleLogs);
+router.use(express.json());
+router.use(consoleLogs);
 
 
 
 
-routes.post('/create-new-chat', async (req, res) => {
+router.post('/create-new-chat', async (req, res) => {
 
     const { userId, chatId } = req.body;
     try {
@@ -29,7 +29,7 @@ routes.post('/create-new-chat', async (req, res) => {
 
 
 
-routes.post('/chat', async (req, res) => {
+router.post('/chat', async (req, res) => {
 
     const { userId, chatId, message } = req.body;
 
@@ -43,16 +43,16 @@ routes.post('/chat', async (req, res) => {
 
 })
 
-routes.post('/delete-chat', async (req, res) => {
+router.post('/delete-chat', async (req, res) => {
 
-    const chatId = req.body.chatId;
+    const {chatId} = req.body;
 
     try {
         deleteChat({chatId});
         res.status(200).send({"success":true, response: "Deleted"})
     } catch(error) {
         console.log(error);
-        res.status(500).send({"success":False, error: "Some Error Occured!"})
+        res.status(500).send({"success":false, error: "Some Error Occured!"})
         
     }
 })
@@ -60,4 +60,4 @@ routes.post('/delete-chat', async (req, res) => {
 
 
 
-export default routes;
+export default router;
