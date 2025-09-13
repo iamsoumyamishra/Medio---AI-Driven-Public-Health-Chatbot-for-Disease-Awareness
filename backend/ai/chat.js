@@ -60,14 +60,13 @@ export const chat = async (userId, chatId, message) => {
     const response = await chat.sendMessage({ message: message });
 
     chatHistory.push({
-        role: 'user',
+        role: 'model',
         parts: [{ text: response.text }]
     });
 
+    await Chat.findOneAndUpdate({ chatId }, title ? { chatTitle: title.text, chatHistory } : {chatHistory}) ;
 
-    await Chat.findOneAndUpdate({ chatId }, { chatTitle: title.text, chatHistory });
-
-    return [title.text, response.text];
+    return title ? [title.text, response.text] : [null, response.text]
 
 
 
