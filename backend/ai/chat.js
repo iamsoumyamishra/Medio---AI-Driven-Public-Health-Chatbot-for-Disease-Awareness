@@ -4,17 +4,16 @@ import dotenv from 'dotenv'
 
 dotenv.config({ quiet: true });
 
-
-const ai = new GoogleGenAI({});
+const API_KEY = process.env.API_KEY
 const model = process.env.AI_MODEL
+const ai = new GoogleGenAI({ apiKey: API_KEY });
 
 
 
-export const createNewChat = async (userId, chatId) => {
+export const createNewChat = async (userId) => {
 
     const newChat = await Chat.create({
         userId,
-        chatId,
         chatHistory: []
     });
 
@@ -23,12 +22,12 @@ export const createNewChat = async (userId, chatId) => {
 
 
 
+export const chat = async (chatId, message) => {
 
-export const chat = async (userId, chatId, message) => {
 
-
-    const chatObj = await Chat.findOne({ chatId }).lean();
+    const chatObj = await Chat.findById(chatId).lean();
     const chatHistory = chatObj.chatHistory;
+
 
     let title;
     if (chatHistory.length === 0) {
@@ -64,7 +63,7 @@ export const chat = async (userId, chatId, message) => {
         parts: [{ text: response.text }]
     });
 
-    await Chat.findOneAndUpdate({ chatId }, title ? { chatTitle: title.text, chatHistory } : {chatHistory}) ;
+    await Chat.findOneAndUpdate({ _id: chatId }, title ? { chatTitle: title.text, chatHistory } : { chatHistory });
 
     return title ? [title.text, response.text] : [null, response.text]
 
@@ -74,7 +73,15 @@ export const chat = async (userId, chatId, message) => {
 
 export const deleteChat = async (chatId) => {
 
-
     await Chat.findOneAndDelete(chatId);
 
+}
+
+
+export const fetchAllChats = async (userId) => {
+
+
+    const chats = await Chat.find({ userId });
+
+    return { success: true, chats }
 }

@@ -1,18 +1,19 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import aiApi from './routes/api.js';
+import aiApi from './routes/ai.js';
 import auth from './routes/auth.js';
 import consoleLogs from './middleware/consoleLogs.js';
 
-dotenv.config({quiet: true})
+dotenv.config({ quiet: true })
 
 const port = process.env.PORT;
 const app = express();
+export const JWT_TOKEN = process.env.JWT_TOKEN
 
 
 
-try{
+try {
     const conn = await mongoose.connect(process.env.DATABASE_URI);
     console.log("Database Successfully Connected!")
 } catch {
@@ -21,7 +22,7 @@ try{
 
 
 app.use('/api/ai', aiApi);
-app.use('/auth', auth);
+app.use('/api/auth', auth);
 app.use(express.json());
 app.use(consoleLogs);
 
