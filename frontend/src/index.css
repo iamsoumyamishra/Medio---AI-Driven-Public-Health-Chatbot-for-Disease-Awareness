@@ -3,3 +3,28 @@
 body{
   background-color: #eff4fb;
 }
+
+/* For WebKit browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 8px;  /* scrollbar thickness */
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* invisible track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.6); /* visible thumb */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(100, 100, 100, 0.9);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;                /* makes it thinner */
+  scrollbar-color: rgba(100, 100, 100, 0.6) transparent; /* thumb | track */
+}

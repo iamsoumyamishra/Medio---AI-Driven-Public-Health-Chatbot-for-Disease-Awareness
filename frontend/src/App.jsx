@@ -5,7 +5,8 @@ import Chat from './components/Chat'
 const App = () => {
   return (
     <div className="main">
-      <div className="flex">
+      
+      <div className="flex justify-between max-h-screen">
       <Sidebar />
       <Chat />
       </div>

@@ -4,9 +4,12 @@ import { NotebookPenIcon, SearchIcon, MessageCircleIcon, UserIcon } from 'lucide
 const Sidebar = () => {
     return (
 
-        <div className='h-auto'>
 
-            <div className=' w-80 bg-white m-5 p-5 max-h-160 rounded-xl shadow-xl opacity-100 backdrop-blur-sm overflow-hidden transition-transform'>
+        <div className='flex flex-col justify-between'>
+
+
+            <div className='overflow-y-hidden flex flex-col max-h-4/5 w-80 bg-white m-5 p-5 rounded-xl shadow-xl opacity-100 backdrop-blur-sm transition-transform flex-1 min-h-0'>
+
                 <div className="heading ml-2.5 mb-8">
                     <span className='text-3xl'>Medio</span>
                 </div>
@@ -24,7 +27,7 @@ const Sidebar = () => {
                     </div>
                 </div>
 
-                <div className="chats-container">
+                <div className="chats-container flex flex-col min-h-0">
                     <div className="chatHeading mb-5">
 
                         <div className='flex items-center gap-2 text-xl'>
@@ -32,14 +35,36 @@ const Sidebar = () => {
                             Chats
                         </div>
                     </div>
-                    <div className="chats overflow-y-auto mb-4">
+                    <div className="chats flex-1 overflow-y-auto mb-4 h-auto">
                         <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>
                         <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>
+                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>
+                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>
+                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>
+                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>
+                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>
+                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>
+                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>
+                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>
+                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>
+                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>
+                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>
+                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>
+                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>
+                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>                        <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>
                         <div className="chat flex items-center rounded-sm overflow-x-hidden hover:bg-black h-10 hover:text-white transition-all px-2.5 cursor-pointer opacity-75">Chat</div>
+
                     </div>
                 </div>
 
-                <div className="division border border-gray mb-4 rounded-full"></div>
+
+
+            </div>
+
+
+
+            <div className='w-80 bg-white m-5 p-5  rounded-xl shadow-xl opacity-100 backdrop-blur-sm '>
+
 
                 <div className="user-container flex items-center justify-between bg-[rgba(61,61,61,1)] h-16 text-white rounded-sm p-2 ">
                     <div className="user h-full flex gap-2 items-center">
