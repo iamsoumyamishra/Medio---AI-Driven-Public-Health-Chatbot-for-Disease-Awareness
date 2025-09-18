@@ -5,7 +5,7 @@ const Sidebar = () => {
     return (
 
 
-        <div className='flex flex-col justify-between'>
+        <div className='md:flex flex-col justify-between hidden'>
 
 
             <div className='overflow-y-hidden flex flex-col max-h-4/5 w-80 bg-white m-5 p-5 rounded-xl shadow-xl opacity-100 backdrop-blur-sm transition-transform flex-1 min-h-0'>

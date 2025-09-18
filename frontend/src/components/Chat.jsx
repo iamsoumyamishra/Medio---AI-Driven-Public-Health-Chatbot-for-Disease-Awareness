@@ -17,7 +17,7 @@ const Chat = () => {
 
 
             <div className="flex flex-col " >
-                <div className="chat-session flex flex-col h-[70vh] items-center overflow-x-hidden overflow-y-auto pl-10 pr-35 " >
+                <div className="chat-session flex flex-col h-[70vh] items-center overflow-x-hidden overflow-y-auto md:pl-10 pr-0 md:pr-35 " >
 
                     {/* USER */}
                     <div className='flex self-end'>
