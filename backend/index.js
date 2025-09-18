@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import aiApi from './routes/ai.js';
 import auth from './routes/auth.js';
 import consoleLogs from './middleware/consoleLogs.js';
+import cors from 'cors'
 
 dotenv.config({ quiet: true })
 

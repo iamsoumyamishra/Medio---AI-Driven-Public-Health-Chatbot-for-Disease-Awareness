@@ -28,3 +28,12 @@ body{
   scrollbar-width: thin;                /* makes it thinner */
   scrollbar-color: rgba(100, 100, 100, 0.6) transparent; /* thumb | track */
 }
+
+
+.log-in{
+  background-image: url("image.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* height: 100%; */
+  /* width: 100%; */
+}

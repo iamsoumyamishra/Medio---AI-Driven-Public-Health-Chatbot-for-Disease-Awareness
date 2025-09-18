@@ -4,18 +4,23 @@ import User from "../models/User.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { JWT_TOKEN } from "../index.js";
+import cors from 'cors'
+import consoleLogs from "../middleware/consoleLogs.js";
 
 
 
 const router = express.Router();
 
-
+router.use(cors());
+router.use(consoleLogs);
 router.use(express.json());
 
 
 router.post('/create-user', [
     body('username').isString().withMessage("the username must be a string").isLength({ min: 3, max: 100 }).withMessage("the length of the username should be 3 to 100"),
     body('email').isEmail().withMessage("the email is invalid").isLength({ min: 3, max: 100 }),
+    body('address').isString().withMessage("the email is invalid").isLength({ min: 5, max: 300 }),
+    body('gender').isString().withMessage("the email is invalid").isIn(["Male", "Female", "Other"]).withMessage("Gender must be Male, Female and Other"),
     body('password').isString().isLength({ min: 8, max: 16 }).withMessage("length of the password should be 8 to 16")
 ], async (req, res) => {
 
@@ -23,7 +28,7 @@ router.post('/create-user', [
 
     if (!errors.isEmpty()) {
         return res.status(400).json({ success: false, error: errors.array()[0].msg });
-    } 
+    }
 
     try {
         const user = await User.findOne({ email: req.body.email });
@@ -38,6 +43,8 @@ router.post('/create-user', [
 
         const newUser = await User.create({
             username: req.body.username,
+            address: req.body.address,
+            gender: req.body.gender,
             email: req.body.email,
             password: hashedPassword
         });
@@ -51,6 +58,8 @@ router.post('/create-user', [
                 userId: newUser.id,
                 username: newUser.username,
                 email: newUser.email,
+                address: newUser.address,
+                gender: newUser.gender,
                 'auth-token': authToken
             }
         });
@@ -106,6 +115,36 @@ router.post('/log-in', [
 
 
 });
+
+
+router.post('/get-user', async (req, res) => {
+
+    const authToken = req.body.auth["auth-token"];
+
+    if (!authToken) {
+        return res.status(200).json({ success: false, response: "Log in first" });
+    }
+
+    try {
+
+        let id = null;
+        try {
+            id = jwt.verify(authToken, JWT_TOKEN);
+            id = id["id"];
+        } catch (error) {
+            console.log(error)
+            return res.status(400).json({ success: false, error: "Invalid auth-token" });
+        }
+        const user = await User.findById(id).select("-password").lean();
+
+        res.json({ success: true, data: user });
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ success: false, error: "Internal Server Error" })
+    }
+
+})
+
 
 
 

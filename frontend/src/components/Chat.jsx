@@ -1,15 +1,15 @@
 import React from 'react'
-import { UserIcon, BotIcon, SendIcon } from 'lucide-react'
+import { UserIcon, BotIcon, SendIcon, PaperclipIcon } from 'lucide-react'
 
 
 const Chat = () => {
     return (
 
-        <div className='flex flex-col justify-between w-[70%] max-w-full h-screen
-        max-h-screen pb-10 p-5 pr-0 '>
+        <div className='flex flex-col justify-between w-full md:w-[70%] max-w-full h-screen
+        max-h-screen pb-5 md:pb-10 p-3 md:p-5 pr-0'>
 
 
-            <div className='flex px-5 py-4 relative left-10 w-max bg-white  shadow-sm rounded-2xl'>
+            <div className='flex px-3 md:px-5 py-2 md:py-4 relative left-2 md:left-10 w-max bg-white shadow-sm rounded-2xl mt-10 md:mt-0'>
                 <span className='text-3xl'>
                     Chat Title
                 </span>
@@ -17,7 +17,7 @@ const Chat = () => {
 
 
             <div className="flex flex-col " >
-                <div className="chat-session flex flex-col h-[70vh] items-center overflow-x-hidden overflow-y-auto md:pl-10 pr-0 md:pr-35 " >
+                <div className="chat-session flex flex-col h-[60vh] md:h-[70vh] items-center overflow-x-hidden overflow-y-auto pl-2 md:pl-10 pr-0 md:pr-35" >
 
                     {/* USER */}
                     <div className='flex self-end'>
@@ -174,14 +174,17 @@ const Chat = () => {
                 </div>
             </div>
 
-            <div className="flex items-center gap-3 pl-10 pr-35">
+            <div className="flex items-center gap-2 md:gap-3 pl-2 md:pl-10 pr-2 md:pr-35 mt-2 md:mt-0">
                 <div className="flex items-center w-full bg-white shadow-md rounded-full px-4 py-2">
+                    <button className="flex relative right-2 items-center justify-center bg-[rgba(61,61,61,1)] hover:bg-gray-800 transition rounded-full p-2">
+                        <PaperclipIcon className="text-white" size={22} />
+                    </button>
                     <input
                         placeholder="Type something about health..."
                         className="flex-1 bg-transparent outline-none text-gray-700 placeholder-gray-400"
                         type="text"
                     />
-                    <button className="flex items-center justify-center bg-black hover:bg-gray-800 transition rounded-full p-2">
+                    <button className="flex items-center justify-center bg-[rgba(61,61,61,1)] hover:bg-gray-800 transition rounded-full p-2">
                         <SendIcon className="text-white" size={22} />
                     </button>
                 </div>
