@@ -1,8 +1,9 @@
 import express, { response } from 'express';
-import { chat, deleteChat, fetchAllChats } from '../ai/chat.js';
+import { chat, deleteChat, fetchAllChats, fetchChat } from '../ai/chat.js';
 import { createNewChat } from '../ai/chat.js';
 import consoleLogs from '../middleware/consoleLogs.js';
 import fetchUser from '../middleware/fetchUser.js';
+import cors from 'cors'
 
 
 const router = express.Router();
@@ -10,6 +11,7 @@ const router = express.Router();
 
 router.use(express.json());
 router.use(consoleLogs);
+router.use(cors());
 
 
 
@@ -66,6 +68,19 @@ router.post('/fetch-chats', fetchUser, async (req, res) => {
     }
 })
 
+router.post('/fetch-chat', fetchUser, async (req, res) => {
+
+    const { chatId } = req.body;
+
+
+    try {
+        const chats = await fetchChat(chatId);
+        return res.json(chats);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ success: false, error: "Internal Server Problem" })
+    }
+})
 
 
 

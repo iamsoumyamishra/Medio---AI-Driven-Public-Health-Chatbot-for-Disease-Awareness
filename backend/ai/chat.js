@@ -85,3 +85,10 @@ export const fetchAllChats = async (userId) => {
 
     return { success: true, chats }
 }
+
+export const fetchChat = async (chatId) => {
+
+    const chat = await Chat.findById(chatId);
+
+    return ({ success: true, chat })
+}
