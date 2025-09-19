@@ -10,7 +10,7 @@ const LoginProvider = ({children}) => {
     const [isLoggedIn, setIsLoggedIn] = useState(null)
 
   return (
-    <LoginContext.Provider value={{user, isLoggedIn}}>
+    <LoginContext.Provider value={{user, setUser, isLoggedIn, setIsLoggedIn}}>
         {children}
     </LoginContext.Provider>
   )

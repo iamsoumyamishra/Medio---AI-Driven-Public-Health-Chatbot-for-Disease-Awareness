@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { Eye, EyeOff, User, Lock, Mail, Home, UserCircle2 } from 'lucide-react'
-
 import { Link } from 'react-router'
+import plus from '../assets/plus.png'
+import capsule from '../assets/capsule.png'
+import lady from '../assets/lady.png'
+import charkha from '../assets/charkha.png'
 
 
 export default function SignupPage() {
@@ -58,7 +61,7 @@ export default function SignupPage() {
         
         const data = await request.json();
         
-        console.log(data);
+        console.log(data.auth);
         
         
         localStorage.setItem('auth-token',data.auth["auth-token"]);
@@ -74,8 +77,31 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-indigo-900 flex items-center justify-center p-6">
-      <div className="max-w-4xl w-full md:flex md:flex-col grid grid-cols-1 gap-8 items-center">
+    <>
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+      `}</style>
+      <div className="relative min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-indigo-900 flex items-center justify-center p-6">
+        <div className="max-w-4xl w-full md:flex md:flex-col grid grid-cols-1 gap-8 items-center">
+          <div className="absolute right-30 bottom-5 w-56">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-xl transform scale-75 translate-y-8" />
+            <img src={plus} className="relative animate-bounce" style={{animationDuration: '3s'}} />
+          </div>
+          <div className="absolute top-20 left-20 w-70">
+            <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-xl transform scale-75 translate-y-8" />
+            <img src={charkha} className="relative animate-pulse" style={{animationDuration: '4s'}} />
+          </div>
+          <div className="absolute right-30 top-5 w-70">
+            <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-rose-500/20 rounded-full blur-xl transform scale-75 translate-y-8" />
+            <img src={capsule} className="relative" style={{animation: 'float 2.5s ease-in-out infinite'}} />
+          </div>
+          <div className="absolute left-30 bottom-5 w-56">
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-blue-500/20 rounded-full blur-xl transform scale-75 translate-y-8" />
+            <img src={lady} className="relative" style={{animation: 'float 3.5s ease-in-out infinite reverse'}} />
+          </div>
         {/* Left: branding */}
         <div className="hidden md:flex flex-col gap-6 pl-6 text-center">
           <div className="text-white">
@@ -207,14 +233,15 @@ export default function SignupPage() {
                 </Link>
               </div>
 
-              <p className="text-center text-slate-300 text-sm">Already have an account? <Link href="/log-in" className="text-indigo-300 hover:underline">Log in</Link></p>
+              <p className="text-center text-slate-300 text-sm">Already have an account? <Link to="/log-in" className="text-indigo-300 hover:underline">Log in</Link></p>
             </form>
           </div>
           <div className="absolute -right-6 bottom-6 w-24 h-24 rounded-2xl bg-indigo-600/10 blur-md" />
         </div>
       </div>
 
-      <style>{`input::placeholder { color: transparent; }`}</style>
-    </div>
+        <style>{`input::placeholder { color: transparent; }`}</style>
+      </div>
+    </>
   )
 }

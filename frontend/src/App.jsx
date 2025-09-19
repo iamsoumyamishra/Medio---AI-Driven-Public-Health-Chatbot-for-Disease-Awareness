@@ -1,56 +1,47 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Sidebar from './components/Sidebar'
-import Chat from './components/Chat'
 import FetchUser from './functions/FetchUser'
 import { Routes, Route, Navigate } from 'react-router'
 import Login from './components/Login'
-import { MenuIcon, XIcon } from 'lucide-react'
 import SignupPage from './components/Signup'
 import Loading from './components/Loading'
+import {LoginContext} from './context/Logincontext'
 
 const App = () => {
 
-  const [user, setUser] = useState(null);
+  const {user, setUser} = useContext(LoginContext);
   const [loading, setLoading] = useState(true);
 
 
 
-  useEffect(() => {
+useEffect(() => {
+  const token = localStorage.getItem('auth-token');
+  const fetchUser = async (token) => {
 
-    const fetchUser = async () => {
+    const data = await FetchUser(token);
 
-      const authToken = localStorage.getItem('auth-token');
+    setUser(data);
+    setLoading(false); 
 
-      if (authToken) {
+  }
+  if (token) {
 
-        const user = await FetchUser(authToken);
-        setUser(user)
-        setLoading(false)
-        console.log(user, loading)
-      } else {
-        setLoading(false)
-      }
+    setLoading(true);
+    fetchUser(token);
 
-    }
+  } else {
 
-    setTimeout(fetchUser, 3000)
-
-
-
-  }, [user])
+    setLoading(false);
+    
+  }
+}, []);
 
 
 
   return (
     <div className="main w-full">
       <Routes>
-        <Route index element={loading ? (<Loading />) : user && user.success ? (
-            <Sidebar />
-          ) : (
-          <Navigate to={'/log-in'} />
-        )
-
-        } />
+        <Route index element={loading ? (<Loading />) : user && user.success ? (<Sidebar />) : (<Navigate to={'/log-in'} />)} />
         
         <Route path='/sign-up' element={<SignupPage />} />
         <Route path='/log-in' element={<Login />} />
